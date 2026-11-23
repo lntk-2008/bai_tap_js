@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tính lãi suất ngân hàng</title>
+</head>
+<body>
+    <h2>Tính lãi suất ngân hàng (Lãi đơn)</h2>
+    <label>Số tiền gửi/vay (triệu đồng): </label>
+    <input type="number" id="tienGoc" placeholder="Ví dụ: 50"><br><br>
+    
+    <label>Lãi suất (%/năm): </label>
+    <input type="number" id="laiSuat" placeholder="Ví dụ: 8"><br><br>
+    
+    <label>Số năm (n): </label>
+    <input type="number" id="soNam" placeholder="Ví dụ: 2"><br><br>
+    
+    <button onclick="tinhLai()">Tính tiền</button>
+    <h3 id="ketQua"></h3>
+
+    <script>
+        function tinhLai() {
+            let goc = parseFloat(document.getElementById("tienGoc").value);
+            let lai = parseFloat(document.getElementById("laiSuat").value);
+            let nam = parseInt(document.getElementById("soNam").value);
+
+            if (isNaN(goc) || isNaN(lai) || isNaN(nam)) {
+                document.getElementById("ketQua").innerText = "Vui lòng nhập đầy đủ số hợp lệ!";
+                return;
+            }
+
+            let tienLaiMoiNam = goc * (lai / 100);
+            let tongTien = goc + nam * tienLaiMoiNam;
+
+            document.getElementById("ketQua").innerText = 
+                "Sau " + nam + " năm, số tiền cả gốc lẫn lãi là: " + tongTien + " (triệu đồng).";
+        }
+    </script>
+</body>
+</html>
